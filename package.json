@@ -7,5 +7,12 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vijaythaska1/express5npm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vijaythaska1/express5npm.git"
+  }
 }
