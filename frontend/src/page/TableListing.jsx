@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import http from '../axios';
 
 function TableListing() {
   const [users, setUsers] = useState([]);
@@ -9,7 +10,7 @@ function TableListing() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:3434/userFindAll');
+        const response = await http.get('/userFindAll');
         if (response.data.success) {
           setUsers(response.data.data);
         }
@@ -23,7 +24,7 @@ function TableListing() {
 
   const handleDelete = async (userId) => {
     try {
-      const response = await axios.delete(`http://127.0.0.1:3434/userDelete/${userId}`);
+      const response = await http.delete(`/userDelete/${userId}`);
 
       if (response.data.success) {
         setUsers(users.filter(user => user._id !== userId));

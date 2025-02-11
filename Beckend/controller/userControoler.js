@@ -1,17 +1,35 @@
 const userModel = require("../model/userModel")
-
+const bcrypt = require('bcrypt');
 
 module.exports = {
     userCreate: async (req, res) => {
         try {
-            const bodyData = req.body;
-            
-            const createdUsers = await Promise.all(bodyData.map(async (data) => {
-                return await userModel.create(data);
-            }));
+            // const bodyData = req.body;
+            // const createdUsers = await Promise.all(bodyData.map(async (data) => {
+            //     return await userModel.create(data);
+            // }));
 
+            // return res.status(200).send({
+            //     data: createdUsers,
+            //     msg: "Users created successfully",
+            //     success: true,
+            // });
+            const { name, email, password } = req.body;
+            const existingUser = await userModel.findOne({ email });
+            if (existingUser) {
+                return res.status(409).json({
+                    msg: "User with this email already exists",
+                    success: false
+                });
+            }
+            const hashedPassword = await bcrypt.hash(password, 10);
+            const newUser = await userModel.create({
+                name,
+                email,
+                password: hashedPassword
+            });
             return res.status(200).send({
-                data: createdUsers,
+                data: newUser,
                 msg: "Users created successfully",
                 success: true,
             });

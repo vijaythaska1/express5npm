@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import http from '../axios';
 
 function UserUpdate() {
   const { id } = useParams();
@@ -11,7 +12,7 @@ function UserUpdate() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:3434/userFindById/${id}`);
+        const response = await http.get(`/userFindById/${id}`);
         if (response.data.success) {
           setUser(response.data.data);
         }
@@ -26,7 +27,7 @@ function UserUpdate() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://127.0.0.1:3434/userUpdate/${id}`, user);
+      const response = await http.put(`/userUpdate/${id}`, user);
       if (response.data.success) {
         navigate('/');
       }
