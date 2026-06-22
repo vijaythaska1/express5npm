@@ -1,22 +1,18 @@
 {
   "name": "express5npm",
-  "version": "1.0.1",
-  "description": "Full-stack application with NestJS backend and Next.js frontend",
+  "version": "1.0.2",
   "main": "index.js",
   "scripts": {
-    "dev:backend": "cd beckned && npm run start:dev",
-    "dev:frontend": "cd next && npm run dev",
-    "install:all": "cd beckned && npm install && cd ../next && npm install"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vijaythaska1/express5npm.git"
+    "url": "https://github.com/vijaythaska1/express5npm.git"
   },
-  "keywords": [
-    "nestjs",
-    "nextjs",
-    "fullstack"
-  ],
-  "author": "vijaythaska1",
-  "license": "ISC"
+  "bugs": {
+    "url": "https://github.com/vijaythaska1/express5npm.git"
+  }
 }
